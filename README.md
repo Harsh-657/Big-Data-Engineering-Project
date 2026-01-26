@@ -2,7 +2,7 @@
 
 Welcome to the **DA-IICT Faculty Data Engine**.
 
-Imagine you need to build a digital directory of every professor at DA-IICT (Faculty, Adjuncts, Distinguished Professors, etc.). Doing this manually—copy-pasting names, emails, and bios one by one—would take days and be prone to errors.
+Imagine you need to build a digital directory of every professor at DA-IICT (Faculty, Adjuncts, Distinguished Professors, etc.). Doing this manually, copy-pasting names, emails, and bios one by one, would take days and be prone to errors.
 
 **This project automates that entire process.** It is a "Digital Pipeline" that:
 1.  **Reads** the college website (Ingestion).
