@@ -54,3 +54,20 @@ Here is a map of the files in this repository:
     The database file where all the information lives (this is created automatically by the notebook).
 * **`requirements.txt`** 
     A list of tools this project needs (like `fastapi` and `pandas`).
+
+```mermaid
+flowchart LR
+    A[📥 Ingestion<br/>(Scraper)] --> B[🔧 Transformation<br/>(Cleaner)]
+    B --> C[🗄️ Storage<br/>(SQLite DB)]
+    C --> D[🚀 Serving<br/>(FastAPI)]
+
+    click A href "#phase-1-ingestion-the-scraper" "Go to Ingestion"
+    click B href "#phase-2-transformation-the-cleaner" "Go to Transformation"
+    click C href "#phase-3-storage-the-database" "Go to Storage"
+    click D href "#phase-5-serving-the-api" "Go to Serving"
+
+    style A fill:#e3f2fd,stroke:#1e88e5,stroke-width:2px
+    style B fill:#e8f5e9,stroke:#43a047,stroke-width:2px
+    style C fill:#fff3e0,stroke:#fb8c00,stroke-width:2px
+    style D fill:#f3e5f5,stroke:#8e24aa,stroke-width:2px
+```
