@@ -72,14 +72,14 @@ Here is a map of the files in this repository:
 
 ```mermaid
 flowchart LR
-    A[📥 Ingestion<br/>(Scraper)] --> B[🔧 Transformation<br/>(Cleaner)]
-    B --> C[🗄️ Storage<br/>(SQLite DB)]
-    C --> D[🚀 Serving<br/>(FastAPI)]
+    A[Ingestion (Scraper)] --> B[Transformation (Cleaner)]
+    B --> C[Storage (SQLite DB)]
+    C --> D[Serving (FastAPI)]
 
-    click A href "#phase-1-ingestion-the-scraper" "Go to Ingestion"
-    click B href "#phase-2-transformation-the-cleaner" "Go to Transformation"
-    click C href "#phase-3-storage-the-database" "Go to Storage"
-    click D href "#phase-5-serving-the-api" "Go to Serving"
+    click A href "#phase-1-ingestion-the-scraper"
+    click B href "#phase-2-transformation-the-cleaner"
+    click C href "#phase-3-storage-the-database"
+    click D href "#phase-4-serving-the-api"
 
     style A fill:#e3f2fd,stroke:#1e88e5,stroke-width:2px
     style B fill:#e8f5e9,stroke:#43a047,stroke-width:2px
