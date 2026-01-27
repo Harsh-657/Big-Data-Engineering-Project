@@ -41,22 +41,6 @@ We approached this problem by breaking it down into four distinct stages. Think 
     * This acts like a receptionist. You ask it for "All Faculty" or "Search for Gupta", and it instantly hands you the exact data in a computer-readable format (JSON).
 
 ---
-## Dataset Structure
-
-The dataset contains 110 records and 6 columns with no missing values.
-
-| Column | Description | Type |
-|-------|------------|------|
-| Unnamed: 0 | Index column | Integer |
-| Name | Faculty name | Text |
-| Education | Qualification | Text |
-| Contact Number | Phone number | Text |
-| Mail-Id | Email address | Text |
-| Area of Research | Specialization | Text |
-
-All columns contain complete data. The dataset occupies approximately 5.3 KB of memory.
-
----
 ## 📂 Project Files
 
 Here is a map of the files in this repository:
@@ -69,3 +53,18 @@ Here is a map of the files in this repository:
     The database file where all the information lives (this is created automatically by the notebook).
 * **`requirements.txt`** 
     A list of tools this project needs (like `fastapi` and `pandas`).
+
+---
+
+## 📂 Repository Structure
+
+The project is organized into modular components for scraping, cleaning, storing, and serving data.
+
+```text
+├── 📓 Scraping and transformation.ipynb  # The Engine: Scrapes website & builds the DB
+├── 🐍 main.py                            # The Server: FastAPI app to serve data
+├── 📊 data_stats.py                      # The Analyst: Generates quality reports
+├── 🗄️ faculty.db                         # The Vault: SQLite database (Auto-generated)
+├── 📋 requirements.txt                   # The Toolkit: Dependencies list
+└── 📄 README.md                          # The Manual: Project documentation
+```
