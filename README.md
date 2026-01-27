@@ -23,11 +23,11 @@ Manually collecting and maintaining information for hundreds of faculty members 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                        DA-IICT FACULTY DATA PIPELINE                     │
+│                        DA-IICT FACULTY DATA PIPELINE                    │
 └─────────────────────────────────────────────────────────────────────────┘
 
-    📡 DATA SOURCE                🔧 PROCESSING              💾 STORAGE         🚀 SERVING
-    ═════════════                ═════════════             ═════════         ═══════════
+    📡 DATA SOURCE                 🔧 PROCESSING             💾 STORAGE        🚀 SERVING
+    ═════════════                   ═════════════             ═════════         ═══════════
          
     ┌──────────┐                                                            
     │ DA-IICT  │                ┌──────────────┐          ┌──────────┐     ┌──────────┐
