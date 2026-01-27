@@ -63,7 +63,6 @@ The project is organized into modular components for scraping, cleaning, storing
 ```text
 ├── 📓 Scraping and transformation.ipynb  # The Engine: Scrapes website & builds the DB
 ├── 🐍 main.py                            # The Server: FastAPI app to serve data
-├── 📊 data_stats.py                      # The Analyst: Generates quality reports
 ├── 🗄️ faculty.db                         # The Vault: SQLite database (Auto-generated)
 ├── 📋 requirements.txt                   # The Toolkit: Dependencies list
 └── 📄 README.md                          # The Manual: Project documentation
