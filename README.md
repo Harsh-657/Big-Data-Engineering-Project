@@ -41,7 +41,22 @@ We approached this problem by breaking it down into four distinct stages. Think 
     * This acts like a receptionist. You ask it for "All Faculty" or "Search for Gupta", and it instantly hands you the exact data in a computer-readable format (JSON).
 
 ---
+## Dataset Structure
 
+The dataset contains 110 records and 6 columns with no missing values.
+
+| Column | Description | Type |
+|-------|------------|------|
+| Unnamed: 0 | Index column | Integer |
+| Name | Faculty name | Text |
+| Education | Qualification | Text |
+| Contact Number | Phone number | Text |
+| Mail-Id | Email address | Text |
+| Area of Research | Specialization | Text |
+
+All columns contain complete data. The dataset occupies approximately 5.3 KB of memory.
+
+---
 ## 📂 Project Files
 
 Here is a map of the files in this repository:
