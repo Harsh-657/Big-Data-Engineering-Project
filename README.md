@@ -70,19 +70,40 @@ Here is a map of the files in this repository:
 * **`requirements.txt`** 
     A list of tools this project needs (like `fastapi` and `pandas`).
 
-```mermaid
-flowchart LR
-    A[Ingestion (Scraper)] --> B[Transformation (Cleaner)]
-    B --> C[Storage (SQLite DB)]
-    C --> D[Serving (FastAPI)]
+graph LR
+    %% -- DATA SOURCES --
+    Web[🌐 DA-IICT Website]
 
-    click A href "#phase-1-ingestion-the-scraper"
-    click B href "#phase-2-transformation-the-cleaner"
-    click C href "#phase-3-storage-the-database"
-    click D href "#phase-4-serving-the-api"
+    %% -- THE ENGINE (Notebook) --
+    subgraph ETL_Process ["⚙️ The Engine (Jupyter Notebook)"]
+        direction TB
+        Scraper[🕷️ Ingestion<br/>(BeautifulSoup)]
+        Cleaner[🧹 Transformation<br/>(Pandas & Regex)]
+    end
 
-    style A fill:#e3f2fd,stroke:#1e88e5,stroke-width:2px
-    style B fill:#e8f5e9,stroke:#43a047,stroke-width:2px
-    style C fill:#fff3e0,stroke:#fb8c00,stroke-width:2px
-    style D fill:#f3e5f5,stroke:#8e24aa,stroke-width:2px
-```
+    %% -- STORAGE --
+    DB[(🗄️ SQLite DB<br/>faculty.db)]
+
+    %% -- CONSUMERS --
+    Stats[📊 Analytics Report<br/>(data_stats.py)]
+    API[🚀 REST API<br/>(FastAPI)]
+    User[👤 End User /<br/>Data Scientist]
+
+    %% -- FLOWS --
+    Web -->|Raw HTML| Scraper
+    Scraper -->|Raw Data| Cleaner
+    Cleaner -->|Clean Data| DB
+    
+    DB -->|Read Data| Stats
+    DB -->|Query Data| API
+    API -->|JSON Response| User
+
+    %% -- STYLING --
+    style Web fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+    style ETL_Process fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,stroke-dasharray: 5 5
+    style Scraper fill:#ffffff,stroke:#7b1fa2
+    style Cleaner fill:#ffffff,stroke:#7b1fa2
+    style DB fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+    style API fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    style Stats fill:#eceff1,stroke:#455a64,stroke-width:2px
+    style User fill:#fff,stroke:#333,stroke-width:1px
