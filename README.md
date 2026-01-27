@@ -69,25 +69,3 @@ Here is a map of the files in this repository:
     The database file where all the information lives (this is created automatically by the notebook).
 * **`requirements.txt`** 
     A list of tools this project needs (like `fastapi` and `pandas`).
-
-## 🔄 Data Processing Pipeline
-
-+------------------+
-| Data Ingestion   |
-+------------------+
-         |
-         v
-+------------------+
-| Transformation   |
-+------------------+
-         |
-         v
-+------------------+
-| Storage          |
-+------------------+
-         |
-         v
-+------------------+
-| Serving          |
-+------------------+
-
