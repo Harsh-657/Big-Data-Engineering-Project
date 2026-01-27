@@ -34,14 +34,14 @@ Manually collecting and maintaining information for hundreds of faculty members 
     │ Website  │───────────────>│   Scraper    │─────────>│  Clean   │────>│ SQLite   │
     │ (5 Pages)│                │   (Python)   │          │Transform │     │ Database │
     └──────────┘                └──────────────┘          └──────────┘     └────┬─────┘
-         │                              │                      │                 │
-         │                              │                      │                 │
+         │                              │                      │                │
+         │                              │                      │                │
     Faculty Lists              • BeautifulSoup        • Email fixing       Auto-created
     Adjunct Faculty            • HTTP Requests        • Phone standards    faculty.db
     International              • HTML Parsing         • Null handling           │
     Distinguished              • Data Filtering       • Deduplication           │
-    Visiting                                                                     │
-                                                                                 ▼
+    Visiting                                                                    │
+                                                                                ▼
                                                                           ┌──────────┐
                                                                           │ FastAPI  │
                                                                           │  Server  │
@@ -291,32 +291,12 @@ This data engine can power:
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
 ## 📝 License
 
 This project is for educational purposes. Ensure compliance with DA-IICT's website terms of service before scraping.
 
 ---
 
-## 👤 Author
-
-**Your Name**  
-📧 Email: your.email@example.com  
-🔗 LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)  
-💻 GitHub: [@yourusername](https://github.com/yourusername)
-
----
 
 ## 🙏 Acknowledgments
 
@@ -325,11 +305,3 @@ This project is for educational purposes. Ensure compliance with DA-IICT's websi
 - Python community for amazing libraries
 
 ---
-
-<div align="center">
-  
-**⭐ If you found this project helpful, please give it a star!**
-
-Made with ❤️ and ☕
-
-</div>
