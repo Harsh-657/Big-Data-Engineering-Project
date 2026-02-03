@@ -23,25 +23,25 @@ Manually collecting and maintaining information for hundreds of faculty members 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                        DA-IICT FACULTY DATA PIPELINE                    │
+│                        DA-IICT FACULTY DATA PIPELINE                     │
 └─────────────────────────────────────────────────────────────────────────┘
 
-    📡 DATA SOURCE                 🔧 PROCESSING             💾 STORAGE        🚀 SERVING
-    ═════════════                   ═════════════             ═════════         ═══════════
+    📡 DATA SOURCE                🔧 PROCESSING              💾 STORAGE         🚀 SERVING
+    ═════════════                ═════════════             ═════════         ═══════════
          
     ┌──────────┐                                                            
     │ DA-IICT  │                ┌──────────────┐          ┌──────────┐     ┌──────────┐
     │ Website  │───────────────>│   Scraper    │─────────>│  Clean   │────>│ SQLite   │
     │ (5 Pages)│                │   (Python)   │          │Transform │     │ Database │
     └──────────┘                └──────────────┘          └──────────┘     └────┬─────┘
-         │                              │                      │                │
-         │                              │                      │                │
+         │                              │                      │                 │
+         │                              │                      │                 │
     Faculty Lists              • BeautifulSoup        • Email fixing       Auto-created
     Adjunct Faculty            • HTTP Requests        • Phone standards    faculty.db
     International              • HTML Parsing         • Null handling           │
     Distinguished              • Data Filtering       • Deduplication           │
-    Visiting                                                                    │
-                                                                                ▼
+    Visiting                                                                     │
+                                                                                 ▼
                                                                           ┌──────────┐
                                                                           │ FastAPI  │
                                                                           │  Server  │
@@ -79,16 +79,33 @@ Manually collecting and maintaining information for hundreds of faculty members 
 ### **Phase 2: 🧹 Data Transformation**
 **Objective:** Clean and standardize extracted data
 
+**Initial Data Quality Assessment:**
+
+Our scraping process identified several data quality issues that needed to be addressed before storage:
+
+| Column Name | Missing Values | Data Type |
+|-------------|----------------|-----------|
+| Name | 0 | object |
+| Education | 2 | object |
+| Contact Number | 27 | object |
+| Mail-Id | 1 | object |
+| Area of Research | 3 | object |
+
+*Table: Missing value analysis from scraped faculty data*
+
 **Data Quality Issues Fixed:**
 - ✉️ Email formats: `user[at]daiict[dot]ac[dot]in` → `user@daiict.ac.in`
-- 📞 Phone standardization: Various formats → Consistent format
+- 📞 Phone standardization: Various formats → Consistent format (27 missing values handled)
+- 🎓 Education field: 2 missing entries populated with "N/A"
+- 🔬 Area of Research: 3 missing entries handled appropriately
 - 🖼️ Missing photos: Handle null/placeholder images
 - 🔤 Text normalization: Trim whitespace, fix encoding issues
 
 **Validation Rules:**
-- Email format verification
+- Email format verification (1 invalid email corrected)
 - Duplicate detection and removal
 - Required field checks (name, department)
+- Missing value imputation strategies
 
 **Output:** Clean, validated, structured data ready for storage
 
@@ -169,8 +186,28 @@ da-iict-faculty-engine/
 │   ├── pandas
 │   └── sqlite3 (built-in)
 │
+├── 📊 Assets/                              # Documentation assets
+│   ├── pipeline-architecture.svg          # Visual pipeline diagram
+│   └── data-quality-analysis.jpg          # Missing values report
+│
 └── 📄 README.md                            # This file
 ```
+
+---
+
+## 📊 Project Documentation Assets
+
+This repository includes visual documentation to help understand the data pipeline:
+
+1. **Pipeline Architecture Diagram** (`pipeline-architecture.svg`)
+   - Complete visual representation of all 4 phases
+   - Shows data flow from web scraping to API serving
+   - Includes technology stack and component details
+
+2. **Data Quality Analysis** (`data-quality-analysis.jpg`)
+   - Missing value analysis from initial scraping
+   - Helps understand the cleaning challenges we faced
+   - Referenced in Phase 2 documentation above
 
 ---
 
@@ -291,12 +328,23 @@ This data engine can power:
 
 ---
 
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
 ## 📝 License
 
 This project is for educational purposes. Ensure compliance with DA-IICT's website terms of service before scraping.
 
 ---
-
 
 ## 🙏 Acknowledgments
 
@@ -304,4 +352,7 @@ This project is for educational purposes. Ensure compliance with DA-IICT's websi
 - FastAPI team for the excellent web framework
 - Python community for amazing libraries
 
----
+
+Made with ❤️ and ☕
+
+</div>
