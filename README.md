@@ -81,9 +81,15 @@ Manually collecting and maintaining information for hundreds of faculty members 
 
 **Initial Data Quality Assessment:**
 
-Our scraping process identified several data quality issues that needed to be addressed before storage. Below is the visualization of the missing values found in the raw scraped data:
+Our scraping process identified several data quality issues that needed to be addressed before storage:
 
-![Missing Values Analysis Chart](![data-quality-analysis](https://github.com/user-attachments/assets/6c7a1357-d856-47fe-ae18-86607170cc6a))
+| Column Name | Missing Values | Data Type |
+|-------------|----------------|-----------|
+| Name | 0 | object |
+| Education | 2 | object |
+| Contact Number | 27 | object |
+| Mail-Id | 1 | object |
+| Area of Research | 3 | object |
 
 *Table: Missing value analysis from scraped faculty data*
 
