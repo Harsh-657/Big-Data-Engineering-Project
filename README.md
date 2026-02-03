@@ -23,25 +23,25 @@ Manually collecting and maintaining information for hundreds of faculty members 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                        DA-IICT FACULTY DATA PIPELINE                     │
+│                        DA-IICT FACULTY DATA PIPELINE                    │
 └─────────────────────────────────────────────────────────────────────────┘
 
-    📡 DATA SOURCE                🔧 PROCESSING              💾 STORAGE         🚀 SERVING
-    ═════════════                ═════════════             ═════════         ═══════════
+    📡 DATA SOURCE               🔧 PROCESSING             💾 STORAGE        🚀 SERVING
+    ═════════════                  ═════════════             ═════════         ═══════════
          
     ┌──────────┐                                                            
     │ DA-IICT  │                ┌──────────────┐          ┌──────────┐     ┌──────────┐
     │ Website  │───────────────>│   Scraper    │─────────>│  Clean   │────>│ SQLite   │
     │ (5 Pages)│                │   (Python)   │          │Transform │     │ Database │
     └──────────┘                └──────────────┘          └──────────┘     └────┬─────┘
-         │                              │                      │                 │
-         │                              │                      │                 │
+         │                              │                      │                │
+         │                              │                      │                │
     Faculty Lists              • BeautifulSoup        • Email fixing       Auto-created
     Adjunct Faculty            • HTTP Requests        • Phone standards    faculty.db
     International              • HTML Parsing         • Null handling           │
     Distinguished              • Data Filtering       • Deduplication           │
-    Visiting                                                                     │
-                                                                                 ▼
+    Visiting                                                                    │
+                                                                                ▼
                                                                           ┌──────────┐
                                                                           │ FastAPI  │
                                                                           │  Server  │
@@ -81,15 +81,9 @@ Manually collecting and maintaining information for hundreds of faculty members 
 
 **Initial Data Quality Assessment:**
 
-Our scraping process identified several data quality issues that needed to be addressed before storage:
+Our scraping process identified several data quality issues that needed to be addressed before storage. Below is the visualization of the missing values found in the raw scraped data:
 
-| Column Name | Missing Values | Data Type |
-|-------------|----------------|-----------|
-| Name | 0 | object |
-| Education | 2 | object |
-| Contact Number | 27 | object |
-| Mail-Id | 1 | object |
-| Area of Research | 3 | object |
+![Missing Values Analysis Chart](![data-quality-analysis](https://github.com/user-attachments/assets/6c7a1357-d856-47fe-ae18-86607170cc6a))
 
 *Table: Missing value analysis from scraped faculty data*
 
@@ -353,6 +347,3 @@ This project is for educational purposes. Ensure compliance with DA-IICT's websi
 - Python community for amazing libraries
 
 
-Made with ❤️ and ☕
-
-</div>
