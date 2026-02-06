@@ -1,10 +1,43 @@
 # 🎓 DA-IICT Faculty Data Engine
 
-> **A fully automated data pipeline that scrapes, transforms, stores, and serves DA-IICT faculty information through a RESTful API.**
+> **A fully automated, AI-powered data pipeline that scrapes, transforms, stores, and intelligently serves DA-IICT faculty information through an interactive web interface.**
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)](https://streamlit.io/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.68+-green.svg)](https://fastapi.tiangolo.com/)
 [![SQLite](https://img.shields.io/badge/Database-SQLite-lightgrey.svg)](https://www.sqlite.org/)
+[![AI](https://img.shields.io/badge/AI-Sentence--BERT-orange.svg)](https://www.sbert.net/)
+[![License](https://img.shields.io/badge/License-Educational-yellow.svg)]()
+
+## 🌟 Live Demo
+
+**🚀 Try it yourself:** [faculty-finder.streamlit.app](https://faculty-finder.streamlit.app) *(Replace with your actual deployment URL)*
+
+**Features:**
+- 🔍 **Smart Search:** Find faculty by name, department, or research interests
+- 🧠 **AI-Powered:** Semantic search understands context, not just keywords
+- ⚡ **Lightning Fast:** Pre-computed embeddings for instant results
+- 📱 **Mobile-Friendly:** Responsive design works on all devices
+
+---
+
+## ✨ Key Features
+
+### 🎯 Intelligent Search
+- **Natural Language Queries:** Search "professors working on AI" instead of exact keywords
+- **Context-Aware Results:** Finds "machine learning expert" when you search "neural networks"
+- **Ranked by Relevance:** AI-powered similarity scoring puts best matches first
+
+### 📊 Comprehensive Data
+- **150+ Faculty Profiles:** Complete database of DA-IICT faculty
+- **5 Categories:** Faculty, Adjunct, International, Distinguished, Visiting
+- **Rich Information:** Name, email, phone, department, research areas, photos
+
+### 🛠️ Developer-Friendly
+- **Modular Architecture:** Separate scripts for each pipeline phase
+- **REST API Option:** JSON endpoints for integration with other apps
+- **Well-Documented Code:** Clear comments and function docstrings
+- **Easy Deployment:** One-click hosting on Streamlit Cloud
 
 ---
 
@@ -22,62 +55,75 @@ Manually collecting and maintaining information for hundreds of faculty members 
 ## 🏗️ Pipeline Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                        DA-IICT FACULTY DATA PIPELINE                    │
-└─────────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────────────────────┐
+│                        DA-IICT FACULTY DATA PIPELINE (5 PHASES)                          │
+└─────────────────────────────────────────────────────────────────────────────────────────┘
 
-    📡 DATA SOURCE               🔧 PROCESSING             💾 STORAGE        🚀 SERVING
-    ═════════════                  ═════════════             ═════════         ═══════════
+    📡 INGESTION        🔧 TRANSFORM         💾 STORAGE         🧠 AI BRAIN        🚀 SERVING
+    ════════════        ═══════════         ═══════════        ═══════════        ══════════
          
-    ┌──────────┐                                                            
-    │ DA-IICT  │                ┌──────────────┐          ┌──────────┐     ┌──────────┐
-    │ Website  │───────────────>│   Scraper    │─────────>│  Clean   │────>│ SQLite   │
-    │ (5 Pages)│                │   (Python)   │          │Transform │     │ Database │
-    └──────────┘                └──────────────┘          └──────────┘     └────┬─────┘
-         │                              │                      │                │
-         │                              │                      │                │
-    Faculty Lists              • BeautifulSoup        • Email fixing       Auto-created
-    Adjunct Faculty            • HTTP Requests        • Phone standards    faculty.db
-    International              • HTML Parsing         • Null handling           │
-    Distinguished              • Data Filtering       • Deduplication           │
-    Visiting                                                                    │
-                                                                                ▼
-                                                                          ┌──────────┐
-                                                                          │ FastAPI  │
-                                                                          │  Server  │
-                                                                          └────┬─────┘
-                                                                               │
-                                                                               ▼
-                                                                    ┌──────────────────┐
-                                                                    │  REST API        │
-                                                                    │  Endpoints       │
-                                                                    │                  │
-                                                                    │ • GET /faculty   │
-                                                                    │ • GET /search    │
-                                                                    │ • GET /stats     │
-                                                                    └──────────────────┘
+    ┌──────────┐                                                                            
+    │ DA-IICT  │       ┌──────────┐        ┌──────────┐      ┌───────────┐     ┌──────────┐
+    │ Website  │──────>│  Scraper │───────>│  Clean   │─────>│  SQLite   │────>│Embeddings│
+    │(5 Pages) │       │  (Py)    │        │Transform │      │ Database  │     │Generator │
+    └──────────┘       └──────────┘        └──────────┘      └──────────┘     └────┬─────┘
+         │                   │                    │                │                 │
+         │                   │                    │                │                 │
+    Faculty Lists    BeautifulSoup      Email fixing        faculty.db        Vector AI
+    Adjunct          HTTP Requests      Phone standards     ACID DB          Sentence-T
+    International    HTML Parsing       Null handling                             │
+    Distinguished    Filtering          Deduplication                             │
+    Visiting                                                                       ▼
+         │                   │                    │                          ┌──────────┐
+         ▼                   ▼                    ▼                          │ .pkl     │
+    scrape_faculty.py    store_data.py      faculty.db                      │Embeddings│
+         │                                                                   └────┬─────┘
+         ▼                                                                        │
+    daiict_faculty_final.csv                                                     │
+                                                                                  ▼
+                                                                          ┌──────────────┐
+                                                                          │  Streamlit   │
+                                                                          │   Web App    │
+                                                                          │  (app.py)    │
+                                                                          └──────┬───────┘
+                                                                                 │
+                                                                                 ▼
+                                                                      ┌─────────────────────┐
+                                                                      │  🌐 Web Interface   │
+                                                                      │  • Semantic Search  │
+                                                                      │  • Faculty Profiles │
+                                                                      │  • Filters          │
+                                                                      └─────────────────────┘
+                                                                      
+                                                         ALTERNATIVE: FastAPI (main.py)
+                                                                      ↓
+                                                              REST API Endpoints
+                                                              /faculty, /search, /stats
 ```
 
 ---
 
-## 🔄 The 4-Phase Pipeline
+## 🔄 The 5-Phase Pipeline
 
 ### **Phase 1: 📥 Data Ingestion**
 **Objective:** Extract raw faculty data from DA-IICT website
 
 - **Target Sources:** 5 faculty category pages (Faculty, Adjunct, International, Distinguished, Visiting)
 - **Technology:** Python with BeautifulSoup and Requests
+- **Implementation:** `scrape_faculty.py`
 - **Challenges Solved:**
   - Dynamic HTML structure navigation
   - Filtering non-faculty elements (navigation, footers, ads)
   - Handling missing or inconsistent page structures
   
-**Output:** Raw faculty profile data (names, emails, phone numbers, departments, photos)
+**Output:** `daiict_faculty_final.csv` - Raw faculty profile data (names, emails, phone numbers, departments, photos)
 
 ---
 
 ### **Phase 2: 🧹 Data Transformation**
 **Objective:** Clean and standardize extracted data
+
+**Implementation:** `store_data.py`
 
 **Initial Data Quality Assessment:**
 
@@ -92,29 +138,6 @@ Our scraping process identified several data quality issues that needed to be ad
 | Area of Research | 3 | object |
 
 *Table: Missing value analysis from scraped faculty data*
-
-**Post-Transformation Data Quality Metrics:**
-
-After cleaning and standardization, we analyzed the text characteristics to ensure data integrity:
-
-| Column Name | Average Word Length |
-|-------------|---------------------|
-| Name | 5.12 |
-| Education | 6.84 |
-| Area of Research | 7.03 |
-| Email | 4.91 |
-| Department | 6.25 |
-
-*Table: Average character length per word in each field (validates successful cleaning)*
-
-**Key Insights:**
-- **Name fields** maintain concise formatting (avg 5.12 chars) - no data corruption
-- **Research areas** contain technical terminology (avg 7.03 chars) as expected
-- **Email usernames** are appropriately short (avg 4.91 chars)
-- **Department names** follow standard institutional naming (avg 6.25 chars)
-- **Education credentials** show proper abbreviation handling (avg 6.84 chars)
-
-These metrics confirm our transformation pipeline successfully preserved data semantics while standardizing formats.
 
 **Data Quality Issues Fixed:**
 - ✉️ Email formats: `user[at]daiict[dot]ac[dot]in` → `user@daiict.ac.in`
@@ -136,6 +159,8 @@ These metrics confirm our transformation pipeline successfully preserved data se
 
 ### **Phase 3: 💾 Data Storage**
 **Objective:** Persist data in a reliable, queryable format
+
+**Implementation:** `store_data.py` (same module as Phase 2)
 
 **Database:** SQLite (`faculty.db`)
 
@@ -161,8 +186,51 @@ CREATE TABLE faculty (
 
 ---
 
-### **Phase 4: 🚀 Data Serving**
-**Objective:** Expose data through a high-performance REST API
+### **Phase 4: 🧠 AI Enhancement (Semantic Search)**
+**Objective:** Enable intelligent, context-aware faculty search
+
+**Implementation:** `generate_embeddings.py`
+
+**Technology:** 
+- **Sentence Transformers** (all-MiniLM-L6-v2 model)
+- **Vector Embeddings** for semantic similarity
+- **scikit-learn** for cosine similarity calculations
+
+**How It Works:**
+1. Converts faculty data (names, research areas, departments) into vector embeddings
+2. Stores embeddings in `faculty_embeddings.pkl`
+3. Enables natural language queries like "machine learning professor" to find relevant faculty
+4. Returns results ranked by semantic similarity (not just keyword matching)
+
+**Benefits:**
+- 🎯 **Smart Search:** Understands intent, not just keywords
+- 🔍 **Contextual Results:** Finds "AI researcher" when you search "neural networks"
+- ⚡ **Fast Retrieval:** Pre-computed embeddings for instant results
+
+**Output:** `faculty_embeddings.pkl` - Vector representations of faculty data
+
+---
+
+### **Phase 5: 🚀 User Interface & Serving**
+**Objective:** Provide accessible interfaces for end users
+
+#### **Option A: Streamlit Web App (Primary)**
+**Implementation:** `app.py`
+
+**Features:**
+- 🎨 Clean, modern interface
+- 🔍 Semantic search integration
+- 📊 Real-time results display
+- 📱 Mobile-responsive design
+- 🌐 One-click deployment to Streamlit Cloud
+
+**Endpoints (via UI):**
+- Search faculty by name/department/research area
+- View detailed faculty profiles
+- Filter by category (Faculty, Adjunct, etc.)
+
+#### **Option B: FastAPI REST API (Alternative)**
+**Implementation:** `main.py`
 
 **Technology:** FastAPI (Python's fastest web framework)
 
@@ -188,26 +256,37 @@ GET  /stats            → Get database statistics
 ```
 da-iict-faculty-engine/
 │
-├── 📓 Scraping and transformation.ipynb    # Core ETL pipeline (Phases 1-3)
-│   ├── Web scraping logic
-│   ├── Data cleaning functions
-│   └── Database insertion
+├── 🔍 scrape_faculty.py                    # Phase 1: Web scraping module
+│   └── Extracts faculty data from DA-IICT website
 │
-├── 🐍 main.py                              # FastAPI server (Phase 4)
-│   ├── Route definitions
-│   ├── Database queries
-│   └── Response formatting
+├── 💾 store_data.py                        # Phase 2 & 3: Data cleaning & storage
+│   ├── Cleans and transforms scraped data
+│   └── Creates SQLite database
 │
-├── 🗄️ faculty.db                           # SQLite database (auto-generated)
-│   └── Stores all faculty records
+├── 🧠 generate_embeddings.py               # AI Enhancement: Semantic search
+│   └── Creates vector embeddings for intelligent search
+│
+├── 🎨 app.py                               # Phase 4: Streamlit web interface
+│   ├── Interactive faculty search UI
+│   ├── Semantic search integration
+│   └── Real-time query results
+│
+├── 🐍 main.py                              # Alternative: FastAPI REST API
+│   ├── RESTful endpoints
+│   └── JSON response formatting
+│
+├── 📊 daiict_faculty_final.csv             # Intermediate: Scraped raw data
+│
+├── 🗄️ faculty.db                           # Database: Cleaned faculty records
+│
+├── 🧮 faculty_embeddings.pkl               # AI Model: Vector embeddings
 │
 ├── 📋 requirements.txt                     # Python dependencies
-│   ├── fastapi
-│   ├── uvicorn
-│   ├── beautifulsoup4
-│   ├── requests
+│   ├── streamlit
+│   ├── sentence-transformers
 │   ├── pandas
-│   └── sqlite3 (built-in)
+│   ├── scikit-learn
+│   └── torch (CPU version)
 │
 ├── 📊 Assets/                              # Documentation assets
 │   ├── pipeline-architecture.svg          # Visual pipeline diagram
@@ -239,35 +318,141 @@ This repository includes visual documentation to help understand the data pipeli
 ### Prerequisites
 - Python 3.8 or higher
 - pip (Python package manager)
+- Git (for version control)
 
-### Installation
+### Installation & Setup
 
-1. **Clone the repository**
+**1. Clone the repository**
 ```bash
-git clone <repository-url>
-cd da-iict-faculty-engine
+git clone https://github.com/Harsh-657/Faculty-Finder.git
+cd Faculty-Finder
 ```
 
-2. **Install dependencies**
+**2. Install dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-3. **Run the data pipeline**
+### Running the Pipeline (Execute in Order)
+
+**Step 1: 📡 Data Ingestion (Scraping)**
 ```bash
-jupyter notebook "Scraping and transformation.ipynb"
-# Execute all cells to scrape and build the database
+python scrape_faculty.py
+```
+- **Output:** `daiict_faculty_final.csv`
+- **Purpose:** Extracts faculty data from 5 DA-IICT web pages
+- **Duration:** ~30-60 seconds
+
+**Step 2: 🧹 Data Transformation & Storage**
+```bash
+python store_data.py
+```
+- **Output:** `faculty.db` (SQLite database)
+- **Purpose:** Cleans data and stores in structured format
+- **Duration:** ~5-10 seconds
+
+**Step 3: 🧠 AI Enhancement (Semantic Search)**
+```bash
+python generate_embeddings.py
+```
+- **Output:** `faculty_embeddings.pkl`
+- **Purpose:** Creates vector embeddings for intelligent search
+- **Duration:** ~30 seconds (first run, downloads AI model)
+
+**Step 4: 🎨 Launch the Web Interface**
+```bash
+streamlit run app.py
+```
+- **Access:** Opens automatically at `http://localhost:8501`
+- **Features:** 
+  - Interactive search interface
+  - Semantic search powered by AI
+  - Real-time faculty information display
+
+### Alternative: REST API Server
+
+If you prefer a REST API instead of the web interface:
+
+```bash
+python main.py
+```
+- Interactive API docs: `http://localhost:8000/docs`
+- Alternative docs: `http://localhost:8000/redoc`
+- Endpoints: `/faculty`, `/search`, `/stats`
+
+---
+
+## 🌐 Deployment (Public Hosting)
+
+### Deploy to Streamlit Community Cloud (Free)
+
+**Step 1: Prepare Repository**
+```bash
+git add .
+git commit -m "Ready for deployment"
+git push origin main
 ```
 
-4. **Start the API server**
+**Important:** Ensure these files are in your repository:
+- `app.py`
+- `requirements.txt`
+- `daiict_faculty_final.csv`
+- `faculty_embeddings.pkl`
+
+**Note:** If `faculty_embeddings.pkl` exceeds 100MB, use Git LFS:
 ```bash
-uvicorn main:app --reload
+git lfs install
+git lfs track "*.pkl"
+git add .gitattributes
 ```
 
-5. **Access the API**
-- Interactive docs: http://localhost:8000/docs
-- Alternative docs: http://localhost:8000/redoc
-- Raw API: http://localhost:8000/faculty
+**Step 2: Deploy**
+
+1. Go to [share.streamlit.io](https://share.streamlit.io)
+2. Sign in with GitHub
+3. Click **"New App"**
+4. Select your repository (`Harsh-657/Faculty-Finder`)
+5. Set main file: `app.py`
+6. Click **"Deploy"**
+
+**Step 3: Share**
+
+Your app will be live at: `https://faculty-finder.streamlit.app`
+
+Streamlit automatically:
+- ✅ Installs dependencies from `requirements.txt`
+- ✅ Loads your data files
+- ✅ Provides free HTTPS hosting
+- ✅ Auto-updates on git push
+
+### Deploy to Other Platforms
+
+<details>
+<summary><b>Heroku Deployment</b></summary>
+
+```bash
+# Create Procfile
+echo "web: streamlit run app.py --server.port=$PORT" > Procfile
+
+# Deploy
+heroku create faculty-finder-app
+git push heroku main
+```
+</details>
+
+<details>
+<summary><b>AWS/GCP/Azure Deployment</b></summary>
+
+Use Docker for containerized deployment:
+```dockerfile
+FROM python:3.9-slim
+WORKDIR /app
+COPY . .
+RUN pip install -r requirements.txt
+EXPOSE 8501
+CMD ["streamlit", "run", "app.py"]
+```
+</details>
 
 ---
 
@@ -275,43 +460,57 @@ uvicorn main:app --reload
 
 This data engine can power:
 
-1. **🌐 Web Applications**
-   - Faculty directory websites
-   - Student portals
+1. **🌐 Interactive Web Applications**
+   - **Faculty Finder (Streamlit)** - Primary use case
+   - Student portals with semantic search
    - Department dashboards
+   - Academic advisor lookup tools
 
 2. **📱 Mobile Apps**
    - Campus navigation apps
-   - Faculty contact apps
+   - Faculty contact apps (via API)
    - Event management systems
 
-3. **📊 Data Analytics**
+3. **📊 Data Analytics & Research**
    - Department size analysis
+   - Research area clustering
    - Contact information audits
    - Faculty distribution reports
+   - Publication co-authorship networks
 
-4. **🤖 Chatbots & AI Assistants**
-   - "Who teaches Machine Learning?"
-   - "How do I contact Prof. Gupta?"
+4. **🤖 AI-Powered Applications**
+   - **Semantic Search** - "Find professors working on climate change"
+   - Chatbots & virtual assistants
+   - Recommendation engines
+   - Smart course-faculty matching
 
 ---
 
 ## 🔧 Technical Highlights
 
+### AI/ML Capabilities
+- 🧠 **Semantic Search:** Sentence-BERT embeddings for context-aware search
+- 🎯 **Smart Ranking:** Cosine similarity for relevance scoring
+- 📊 **Vector Storage:** Efficient pickle serialization for fast loading
+- 🔄 **Model Caching:** One-time download, persistent usage
+
 ### Performance Optimizations
 - ⚡ Async database queries in FastAPI
 - 🗂️ Database indexing on frequently queried fields
-- 💾 In-memory caching for repeated requests
+- 💾 Pre-computed embeddings for instant search
+- 🚀 Streamlit caching for faster page loads
 
 ### Error Handling
 - ❌ Graceful degradation when website structure changes
 - 🔄 Retry logic for network failures
 - 📝 Comprehensive logging for debugging
+- ⚠️ User-friendly error messages in UI
 
 ### Data Quality
 - ✅ Email validation using regex
 - 🔍 Duplicate detection algorithms
 - 📊 Data completeness reports
+- 🧹 Automated data cleaning pipelines
 
 ---
 
@@ -340,14 +539,83 @@ This data engine can power:
 
 ## 🛠️ Future Enhancements
 
-- [ ] **Automated Scheduling:** Run scraper daily via cron jobs
-- [ ] **Change Detection:** Alert when faculty info changes
-- [ ] **Advanced Search:** Filter by department, research areas
-- [ ] **Data Visualization:** Department distribution charts
-- [ ] **Export Options:** CSV/Excel download endpoints
-- [ ] **Authentication:** Secure API with JWT tokens
+### Automation & Monitoring
+- [ ] **Automated Scheduling:** Run scraper daily via cron jobs or GitHub Actions
+- [ ] **Change Detection:** Email alerts when faculty info changes
+- [ ] **Health Monitoring:** Track scraper success rates and API uptime
+- [ ] **Version Control:** Historical tracking of faculty data changes
+
+### Enhanced Search & Discovery
+- [x] ✅ **Semantic Search** (Already implemented!)
+- [ ] **Advanced Filters:** Multi-select department, research area, designation
+- [ ] **Fuzzy Search:** Handle typos and partial names
+- [ ] **Related Faculty:** "People also viewed" recommendations
+- [ ] **Research Collaboration Graph:** Visualize co-authorship networks
+
+### Data Enrichment
+- [ ] **Publication Integration:** Fetch papers from Google Scholar
+- [ ] **Citation Metrics:** H-index, total citations display
+- [ ] **Course Mappings:** Link faculty to courses they teach
+- [ ] **Office Hours:** Scrape and display availability
+
+### User Experience
+- [ ] **Dark Mode:** Toggle for Streamlit interface
+- [ ] **Export Options:** Download search results as CSV/PDF
+- [ ] **Bookmarking:** Save favorite faculty profiles
+- [ ] **Share Links:** Direct URLs to specific faculty profiles
+
+### Security & Scalability
+- [ ] **Authentication:** User login for personalized features
 - [ ] **Rate Limiting:** Prevent API abuse
-- [ ] **Cloud Deployment:** Host on AWS/GCP/Azure
+- [ ] **CDN Integration:** Faster image loading
+- [ ] **Database Migration:** Move to PostgreSQL for production scale
+- [ ] **Cloud Deployment:** Host on AWS/GCP/Azure with auto-scaling
+
+---
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Q: `ModuleNotFoundError: No module named 'sentence_transformers'`**
+```bash
+# Solution: Install dependencies
+pip install -r requirements.txt
+```
+
+**Q: `generate_embeddings.py` is slow on first run**
+- **Expected behavior:** The AI model (~80MB) downloads on first run
+- Takes 30-60 seconds depending on internet speed
+- Subsequent runs are instant (model is cached)
+
+**Q: Streamlit app shows "File not found: faculty_embeddings.pkl"**
+```bash
+# Solution: Run embeddings generation first
+python generate_embeddings.py
+# Then run the app
+streamlit run app.py
+```
+
+**Q: Web scraping fails with connection errors**
+- **Possible causes:** DA-IICT website is down or structure changed
+- Check internet connection
+- Verify website is accessible: https://www.daiict.ac.in
+- If structure changed, update selectors in `scrape_faculty.py`
+
+**Q: `faculty.db` file is locked**
+- Close any database browser tools (DB Browser for SQLite)
+- Make sure no other scripts are accessing the database
+- Restart your terminal/IDE
+
+**Q: Streamlit app doesn't show on `localhost:8501`**
+```bash
+# Check if port is in use
+netstat -ano | findstr :8501  # Windows
+lsof -i :8501                 # Mac/Linux
+
+# Use a different port
+streamlit run app.py --server.port 8502
+```
 
 ---
 
@@ -369,10 +637,16 @@ This project is for educational purposes. Ensure compliance with DA-IICT's websi
 
 ---
 
+## 👤 Author
+
+**Harsh Jethwani (Harsh-657)**  
+🔗 GitHub: [@Harsh-657](https://github.com/Harsh-657)  
+📦 Repository: [Faculty-Finder](https://github.com/Harsh-657/Faculty-Finder)
+
+---
+
 ## 🙏 Acknowledgments
 
 - DA-IICT for providing publicly accessible faculty information
 - FastAPI team for the excellent web framework
 - Python community for amazing libraries
-
-
