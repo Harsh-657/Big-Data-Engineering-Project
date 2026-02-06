@@ -66,20 +66,20 @@ Manually collecting and maintaining information for hundreds of faculty members 
     │ DA-IICT  │       ┌──────────┐        ┌──────────┐      ┌───────────┐     ┌──────────┐
     │ Website  │──────>│  Scraper │───────>│  Clean   │─────>│  SQLite   │────>│Embeddings│
     │(5 Pages) │       │  (Py)    │        │Transform │      │ Database  │     │Generator │
-    └──────────┘       └──────────┘        └──────────┘      └──────────┘     └────┬─────┘
-         │                   │                    │                │                 │
-         │                   │                    │                │                 │
-    Faculty Lists    BeautifulSoup      Email fixing        faculty.db        Vector AI
-    Adjunct          HTTP Requests      Phone standards     ACID DB          Sentence-T
-    International    HTML Parsing       Null handling                             │
-    Distinguished    Filtering          Deduplication                             │
+    └──────────┘       └──────────┘        └──────────┘      └──────────┘      └────┬─────┘
+         │                   │                    │                │                │
+         │                   │                    │                │                │
+    Faculty Lists    BeautifulSoup      Email fixing        faculty.db         Vector AI
+    Adjunct          HTTP Requests      Phone standards     ACID DB            Sentence-T
+    International    HTML Parsing       Null handling                              │
+    Distinguished    Filtering          Deduplication                              │
     Visiting                                                                       ▼
          │                   │                    │                          ┌──────────┐
          ▼                   ▼                    ▼                          │ .pkl     │
-    scrape_faculty.py    store_data.py      faculty.db                      │Embeddings│
+    scrape_faculty.py    store_data.py      faculty.db                       │Embeddings│
          │                                                                   └────┬─────┘
          ▼                                                                        │
-    daiict_faculty_final.csv                                                     │
+    daiict_faculty_final.csv                                                      │
                                                                                   ▼
                                                                           ┌──────────────┐
                                                                           │  Streamlit   │
@@ -89,7 +89,7 @@ Manually collecting and maintaining information for hundreds of faculty members 
                                                                                  │
                                                                                  ▼
                                                                       ┌─────────────────────┐
-                                                                      │  🌐 Web Interface   │
+                                                                      │  🌐 Web Interface   |
                                                                       │  • Semantic Search  │
                                                                       │  • Faculty Profiles │
                                                                       │  • Filters          │
@@ -98,7 +98,7 @@ Manually collecting and maintaining information for hundreds of faculty members 
                                                          ALTERNATIVE: FastAPI (main.py)
                                                                       ↓
                                                               REST API Endpoints
-                                                              /faculty, /search, /stats
+                                                              /faculty, /search
 ```
 
 ---
@@ -239,7 +239,6 @@ CREATE TABLE faculty (
 GET  /faculty          → Retrieve all faculty members
 GET  /faculty/{id}     → Get specific faculty by ID
 GET  /search?q=name    → Search faculty by name/department
-GET  /stats            → Get database statistics
 ```
 
 **Response Format:** JSON (easily consumable by web/mobile apps)
@@ -378,7 +377,7 @@ python main.py
 ```
 - Interactive API docs: `http://localhost:8000/docs`
 - Alternative docs: `http://localhost:8000/redoc`
-- Endpoints: `/faculty`, `/search`, `/stats`
+- Endpoints: `/faculty`, `/search`
 
 ---
 
