@@ -25,7 +25,7 @@ See the **AI-Powered Semantic Search** in action! Notice how it finds relevant p
 **Example Query:** *"Who works on machine learning and AI?"*  
 **Smart Result:** The system finds professors specializing in *"Deep Learning"*, *"Neural Networks"*, and *"Computer Vision"* — even though those exact words weren't in the search query.
 
-![App Walkthrough](assets/demo.gif)
+![App Walkthrough](assets/Demo.gif)
 
 *GIF Demo: Real-time semantic search finding contextually relevant faculty members*
 
