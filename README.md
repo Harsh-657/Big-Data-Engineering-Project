@@ -25,7 +25,8 @@ See the **AI-Powered Semantic Search** in action! Notice how it finds relevant p
 **Example Query:** *"Who works on machine learning and AI?"*  
 **Smart Result:** The system finds professors specializing in *"Deep Learning"*, *"Neural Networks"*, and *"Computer Vision"* — even though those exact words weren't in the search query.
 
-![App Walkthrough](assets/Demo.gif)
+![Demo](https://github.com/user-attachments/assets/f0265c9b-68ef-450d-948d-ed9ec4883c66)
+
 
 *GIF Demo: Real-time semantic search finding contextually relevant faculty members*
 
@@ -85,7 +86,7 @@ Manually collecting and maintaining information for hundreds of faculty members 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────────┐
-│                        DA-IICT FACULTY DATA PIPELINE (5 PHASES)                          │
+│                        DA-IICT FACULTY DATA PIPELINE (5 PHASES)                         │
 └─────────────────────────────────────────────────────────────────────────────────────────┘
 
     📡 INGESTION        🔧 TRANSFORM         💾 STORAGE         🧠 AI BRAIN        🚀 SERVING
