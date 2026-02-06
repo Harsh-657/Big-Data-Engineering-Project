@@ -9,9 +9,38 @@
 [![AI](https://img.shields.io/badge/AI-Sentence--BERT-orange.svg)](https://www.sbert.net/)
 [![License](https://img.shields.io/badge/License-Educational-yellow.svg)]()
 
-## 🌟 Live Demo
+## 🚀 Demo & Usage
 
-**🚀 Try it yourself:** [faculty-finder.streamlit.app](https://faculty-finder.streamlit.app) *(Replace with your actual deployment URL)*
+### 🟢 **Live Application**
+Click the badge below to try the Faculty Finder instantly (no installation required):
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://big-data-engineering-project-mpsq7bq9ucw7odj7bqejrh.streamlit.app)
+
+---
+
+### 🎥 **Interactive Walkthrough**
+
+See the **AI-Powered Semantic Search** in action! Notice how it finds relevant professors even without exact keyword matches.
+
+**Example Query:** *"Who works on machine learning and AI?"*  
+**Smart Result:** The system finds professors specializing in *"Deep Learning"*, *"Neural Networks"*, and *"Computer Vision"* — even though those exact words weren't in the search query.
+
+![App Walkthrough](assets/demo.gif)
+
+*GIF Demo: Real-time semantic search finding contextually relevant faculty members*
+
+---
+
+### 💡 **Try These Sample Queries**
+```
+🔍 "sustainable energy research"
+🔍 "professors in computer science"  
+🔍 "who teaches data structures"
+🔍 "AI and machine learning experts"
+🔍 "database management faculty"
+```
+
+The AI understands context and intent, not just keywords!
 
 **Features:**
 - 🔍 **Smart Search:** Find faculty by name, department, or research interests
